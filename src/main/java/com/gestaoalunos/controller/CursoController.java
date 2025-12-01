@@ -12,12 +12,12 @@ public class CursoController {
     private final CursoRepository cursoRepository;
 
     public CursoController (CursoRepository cursoRepository){
-        this.cursoRepository = CursoRepository;
+        this.cursoRepository = cursoRepository;
     }
 
     @GetMapping("/cursos")
     public String listarCursos(Model model){
-        model.addAtribute("listaCursos", cursoRepository.findAll());
+        model.addAttribute("listaCursos", cursoRepository.findAll());
         return "cursos/lista";
     }
 
