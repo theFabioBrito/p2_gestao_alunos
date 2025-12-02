@@ -1,40 +1,89 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <title th:text="${titulo}">Cadastrar Curso</title>
+    <title th:text="${titulo}">Cadastro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/styles/form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
-<body>
 
-<h1 th:text="${titulo}">Cadastrar Curso</h1>
+<body class="preload">
 
-<a th:href="@{/cursos}">Voltar para lista</a>
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-school"></i> Sistema de Gestão de Alunos
+        </div>
 
-<form th:action="@{/cursos/novo}" th:object="${curso}" method="post">
+        <nav>
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/alunos}">Alunos</a>
+            <a th:href="@{/cursos}">Cursos</a>
+        </nav>
+    </header>
 
-    <div>
-        <label for="nome">Nome:</label>
-        <input id="nome" type="text" th:field="*{nome}"/>
-        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-    </div>
+    <main>
 
-    <div>
-        <label for="cargaHoraria">Carga Horária:</label>
-        <input id="cargaHoraria" type="number" th:field="*{cargaHoraria}"/>
-        <span th:if="${#fields.hasErrors('cargaHoraria')}" th:errors="*{cargaHoraria}"></span>
-    </div>
+        <div class="page-header">
+            <h1 th:text="${titulo}"></h1>
+        </div>
 
-    <div>
-        <label for="descricao">Descrição:</label>
-        <textarea id="descricao" th:field="*{descricao}"></textarea>
-        <span th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></span>
-    </div>
+        <div class="toast sucesso" th:if="${sucesso}">
+            <i class="fa-solid fa-circle-check"></i>
+            <span th:text="${sucesso}"></span>
+        </div>
 
-    <div>
-        <button type="submit">Salvar</button>
-    </div>
+        <div class="toast erro" th:if="${erro}">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <span th:text="${erro}"></span>
+        </div>
 
-</form>
+        <form th:action="@{${link}}" method="POST" th:object="${curso}" class="form-card">
+
+            <div class="form-group">
+                <label for="nome">Nome do Curso <span>*</span></label>
+                <input type="text" id="nome" th:field="*{nome}" placeholder="Ex: Análise e Desenvolvimento de Sistemas"
+                    required />
+                <span class="erro" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="cargaHoraria">Carga Horária <span>*</span></label>
+                <input type="number" id="cargaHoraria" th:field="*{cargaHoraria}" placeholder="Ex: 240" min="1"
+                    required />
+                <span class="erro" th:if="${#fields.hasErrors('cargaHoraria')}" th:errors="*{cargaHoraria}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" rows="4" th:field="*{descricao}"
+                    placeholder="Ex: Curso voltado ao desenvolvimento de sistemas."></textarea>
+                <span class="erro" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></span>
+            </div>
+
+            <div class="form-actions">
+                <a th:href="@{/cursos}" class="btn btn-cancelar">
+                    Cancelar
+                </a>
+
+                <button type="submit" class="btn">
+                    <i class="fa-solid fa-check"></i> Salvar
+                </button>
+            </div>
+
+        </form>
+
+    </main>
+
+    <script src="/js/transitions.js"></script>
 
 </body>
+
 </html>

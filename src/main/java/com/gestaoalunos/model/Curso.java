@@ -1,10 +1,10 @@
 package com.gestaoalunos.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
-
 
 @Entity
 public class Curso {
@@ -13,19 +13,19 @@ public class Curso {
     @GeneratedValue
     private Long id;
 
-   @NotNull
-    private String nome;
-    
     @NotNull
-  private Integer cargaHoraria;
-    
-    
+    @Column(unique = true)
+    private String nome;
+
+    @NotNull
+    private Integer cargaHoraria;
+
     private String descricao;
 
-    public Curso() {}
+    public Curso() {
+    }
 
     //getters e setters
-
     public Long getId() {
         return id;
     }
@@ -58,5 +58,4 @@ public class Curso {
         this.descricao = descricao;
     }
 
-    
 }

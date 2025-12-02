@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Listagem de Cursos</title>
+    <title>Listagem de Alunos</title>
 
     <link rel="stylesheet" href="/styles/index.css">
     <link rel="stylesheet" href="/styles/listar.css" />
@@ -26,21 +26,13 @@
     </header>
 
     <main>
-        <div class="toast sucesso" th:if="${sucesso}">
-            <i class="fa-solid fa-circle-check"></i>
-            <span th:text="${sucesso}"></span>
-        </div>
-
-        <div class="toast erro" th:if="${erro}">
-            <i class="fa-solid fa-circle-xmark"></i>
-            <span th:text="${erro}"></span>
-        </div>
-
+        <div class="toast" th:if="${sucesso}" th:text="${sucesso}"></div>
+        
         <div class="page-header">
-            <h1>Cursos Cadastrados</h1>
+            <h1>Alunos Cadastrados</h1>
 
-            <a th:href="@{/cursos/novo}" class="btn btn-add">
-                <i class="fa-solid fa-plus"></i> Cadastrar Curso
+            <a th:href="@{/alunos/novo}" class="btn btn-add">
+                <i class="fa-solid fa-plus"></i> Cadastrar Aluno
             </a>
         </div>
 
@@ -50,24 +42,24 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Carga Horária</th>
-                        <th>Descrição</th>
+                        <th>Email</th>
+                        <th>Matrícula</th>
+                        <th>Curso</th>
                     </tr>
                 </thead>
 
-                <tbody th:if="${listaCursos}" th:each="curso : ${listaCursos}">
+                <tbody th:if="${listaAlunos}" th:each="aluno : ${listaAlunos}">
                     <tr>
-                        <td th:text="${curso.nome}"></td>
-                        <td>
-                            <span th:text="${curso.cargaHoraria}"></span> horas
-                        </td>
-                        <td th:text="${curso.descricao}"></td>
+                        <td th:text="${aluno.nome}"></td>
+                        <td th:text="${aluno.email}"></td>
+                        <td th:text="${aluno.matricula}"></td>
+                        <td th:text="${aluno.curso.nome}"></td>
                     </tr>
                 </tbody>
 
-                <tbody th:if="${#lists.isEmpty(listaCursos)}">
+                <tbody th:if="${#lists.isEmpty(listaAlunos)}">
                     <tr>
-                        <td colspan="3" class="no-data">Nenhum curso cadastrado.</td>
+                        <td colspan="4" class="no-data">Nenhum aluno cadastrado.</td>
                     </tr>
                 </tbody>
 

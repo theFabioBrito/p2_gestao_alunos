@@ -4,38 +4,43 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-    @Entity
+@Entity
 public class Aluno {
 
     @Id
     @GeneratedValue
     private Long id;
 
-   @NotNull
+    @NotBlank(message = "O nome é obrigatório")
     private String nome;
-    
+
     @NotNull
     @Email
-    //private String email;
-    
+    private String email;
+
     @NotNull
     private Integer matricula;
 
     @NotNull
     private String curso;
 
-    public Aluno() {}
+    public Aluno() {
+    }
 
     //getters e setters
-
     public Long getId() {
         return id;
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public Integer getMatricula() {
@@ -58,11 +63,12 @@ public class Aluno {
         this.matricula = matricula;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void setCurso(String curso) {
         this.curso = curso;
     }
 
-    
 }
-
-

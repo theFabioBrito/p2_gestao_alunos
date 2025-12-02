@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Sistema de Gestão de Alunos</title>
+
+    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/styles/home.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body class="preload light" id="body">
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-school"></i> Sistema de Gestão de Alunos
+        </div>
+
+        <nav>
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/alunos}">Alunos</a>
+            <a th:href="@{/cursos}">Cursos</a>
+        </nav>
+    </header>
+
+    <main class="home-container">
+
+        <h1>Bem-vindo ao Sistema de Gestão de Alunos</h1>
+        <p class="descricao">
+            Mini-projeto de gestão de alunos para a matéria de Java, utilizando Spring Boot, ThymeLeaf, H2 e JPA.
+        </p>
+        <p class="descricao">
+            Experimente!
+        </p>
+
+        <section class="stats">
+
+            <div class="stat-card">
+                <i class="fa-solid fa-user-graduate"></i>
+                <span class="numero" th:text="${totalAlunos}">0</span>
+                <p>Alunos cadastrados</p>
+            </div>
+
+            <div class="stat-card">
+                <i class="fa-solid fa-book"></i>
+                <span class="numero" th:text="${totalCursos}">0</span>
+                <p>Cursos ativos</p>
+            </div>
+
+        </section>
+
+        <section class="cards">
+
+            <div class="card">
+                <i class="fa-solid fa-users"></i>
+                <h2>Alunos</h2>
+                <p>Gerencie registros e matrículas.</p>
+                <a th:href="@{/alunos}" class="btn">Acessar</a>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-layer-group"></i>
+                <h2>Cursos</h2>
+                <p>Organize a grade curricular.</p>
+                <a th:href="@{/cursos}" class="btn">Acessar</a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2025 Sistema de Gestão de Alunos - Desenvolvido por Fabio Brito e Marcella Ricoy</p>
+    </footer>
+
+    <script src="/js/index.js"></script>
+    <script src="/js/animations.js"></script>
+
+</body>
+
+</html>
