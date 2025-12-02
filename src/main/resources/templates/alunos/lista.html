@@ -26,8 +26,17 @@
     </header>
 
     <main>
-        <div class="toast" th:if="${sucesso}" th:text="${sucesso}"></div>
-        
+
+        <div class="toast sucesso" th:if="${sucesso}">
+            <i class="fa-solid fa-circle-check"></i>
+            <span th:text="${sucesso}"></span>
+        </div>
+
+        <div class="toast erro" th:if="${erro}">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <span th:text="${erro}"></span>
+        </div>
+
         <div class="page-header">
             <h1>Alunos Cadastrados</h1>
 
@@ -70,7 +79,7 @@
     </main>
 
     <script src="/js/transitions.js"></script>
-    <script src="/js/listar.js"></script>
+    <script src="/js/index.js"></script>
 
 </body>
 

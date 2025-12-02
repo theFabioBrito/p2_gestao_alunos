@@ -3,14 +3,16 @@ package com.gestaoalunos.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Curso {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -18,6 +20,7 @@ public class Curso {
     private String nome;
 
     @NotNull
+    @Min(value = 1, message = "A carga horária precisa ser maior que zero")
     private Integer cargaHoraria;
 
     private String descricao;

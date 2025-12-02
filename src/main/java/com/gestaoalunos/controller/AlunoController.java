@@ -2,6 +2,7 @@ package com.gestaoalunos.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -33,7 +34,6 @@ public class AlunoController {
     public String novoAluno(Model model) {
         model.addAttribute("aluno", new Aluno());
         model.addAttribute("listaCursos", cursoRepository.findAll());
-
         model.addAttribute("titulo", "Cadastrar Aluno");
         model.addAttribute("link", "/alunos/novo");
         model.addAttribute("valor", "Salvar");
@@ -42,7 +42,12 @@ public class AlunoController {
     }
 
     @PostMapping("/alunos/novo")
-    public String salvarAluno(@Valid Aluno aluno, RedirectAttributes redirect) {
+    public String salvarAluno(@Valid Aluno aluno, BindingResult result, RedirectAttributes redirect) {
+        if (result.hasErrors()) {
+            redirect.addFlashAttribute("erro", "Erro ao cadastrar curso. Verifique os dados.");
+            return "redirect:/cursos/novo";
+        }
+
         alunoRepository.save(aluno);
         redirect.addFlashAttribute("sucesso", "Aluno cadastrado com sucesso!");
         return "redirect:/alunos";

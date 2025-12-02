@@ -3,6 +3,8 @@ package com.gestaoalunos.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -24,8 +26,10 @@ public class Aluno {
     @NotNull
     private Integer matricula;
 
-    @NotNull
-    private String curso;
+    @ManyToOne
+    @JoinColumn(name = "curso_id")
+    @NotNull(message = "O curso é obrigatório")
+    private Curso curso;
 
     public Aluno() {
     }
@@ -47,7 +51,7 @@ public class Aluno {
         return matricula;
     }
 
-    public String getCurso() {
+    public Curso getCurso() {
         return curso;
     }
 
@@ -67,7 +71,7 @@ public class Aluno {
         this.email = email;
     }
 
-    public void setCurso(String curso) {
+    public void setCurso(Curso curso) {
         this.curso = curso;
     }
 

@@ -31,10 +31,6 @@
 
     <main>
 
-        <div class="page-header">
-            <h1 th:text="${titulo}"></h1>
-        </div>
-
         <div class="toast sucesso" th:if="${sucesso}">
             <i class="fa-solid fa-circle-check"></i>
             <span th:text="${sucesso}"></span>
@@ -43,6 +39,10 @@
         <div class="toast erro" th:if="${erro}">
             <i class="fa-solid fa-circle-xmark"></i>
             <span th:text="${erro}"></span>
+        </div>
+
+        <div class="page-header">
+            <h1 th:text="${titulo}"></h1>
         </div>
 
         <form th:action="@{${link}}" method="POST" th:object="${curso}" class="form-card">
