@@ -1,13 +1,13 @@
 package com.gestaoalunos.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
-
-@Entity
-public class Curso {
+    @Entity
+public class Aluno {
 
     @Id
     @GeneratedValue
@@ -17,12 +17,16 @@ public class Curso {
     private String nome;
     
     @NotNull
-  private Integer cargaHoraria;
+    @Email
+    //private String email;
     
-    
-    private String descricao;
+    @NotNull
+    private Integer matricula;
 
-    public Curso() {}
+    @NotNull
+    private String curso;
+
+    public Aluno() {}
 
     //getters e setters
 
@@ -34,12 +38,12 @@ public class Curso {
         return nome;
     }
 
-    public Integer getCargaHoraria() {
-        return cargaHoraria;
+    public Integer getMatricula() {
+        return matricula;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getCurso() {
+        return curso;
     }
 
     public void setId(Long id) {
@@ -50,13 +54,15 @@ public class Curso {
         this.nome = nome;
     }
 
-    public void setCargaHoraria(Integer cargaHoraria) {
-        this.cargaHoraria = cargaHoraria;
+    public void setMatricula(Integer matricula) {
+        this.matricula = matricula;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setCurso(String curso) {
+        this.curso = curso;
     }
 
     
 }
+
+

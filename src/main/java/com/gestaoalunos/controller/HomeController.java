@@ -1,4 +1,4 @@
-package com.gestaoalunos;
+package com.gestaoalunos.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
