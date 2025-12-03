@@ -212,7 +212,7 @@ http://localhost:8080
 Link no YouTube (não listado):
 
 ```
-[link]
+[https://youtu.be/A_QFUvf1-Bo]
 ```
 
 ---
@@ -222,7 +222,7 @@ Link no YouTube (não listado):
 - Projeto Java
 - README
 - Vídeo explicativo
-- Projeto compactado
+- Projeto compactado via Teams
 
 ## 👩‍💻 Feito por
 [@Marcella Ricoy](https://github.com/marcellarc)
