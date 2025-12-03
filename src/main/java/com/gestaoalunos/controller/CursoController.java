@@ -1,6 +1,5 @@
 package com.gestaoalunos.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +15,6 @@ import jakarta.validation.Valid;
 @Controller
 public class CursoController {
 
-    @Autowired
     private final CursoRepository cursoRepository;
 
     public CursoController(CursoRepository cursoRepository) {
@@ -45,7 +43,6 @@ public class CursoController {
             RedirectAttributes redirect,
             Model model) {
 
-        // Verifica se nome já existe
         if (cursoRepository.existsByNomeIgnoreCase(curso.getNome())) {
             result.rejectValue("nome", "error.curso", "Já existe um curso com esse nome.");
         }

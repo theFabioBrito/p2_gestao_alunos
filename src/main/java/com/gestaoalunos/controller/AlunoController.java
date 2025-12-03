@@ -44,8 +44,8 @@ public class AlunoController {
     @PostMapping("/alunos/novo")
     public String salvarAluno(@Valid Aluno aluno, BindingResult result, RedirectAttributes redirect) {
         if (result.hasErrors()) {
-            redirect.addFlashAttribute("erro", "Erro ao cadastrar curso. Verifique os dados.");
-            return "redirect:/cursos/novo";
+            redirect.addFlashAttribute("erro", "Erro ao cadastrar aluno. Verifique os dados.");
+            return "redirect:/alunos/novo";
         }
 
         alunoRepository.save(aluno);
